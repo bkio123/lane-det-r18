@@ -6,8 +6,11 @@ import PIL.Image
 from torch2trt import TRTModule
 import torchvision.transforms as transforms
 
+
+dir = '/home/nano/workspace/models/lane-det-r18/'
+
 model_trt = TRTModule()
-model_trt.load_state_dict(torch.load('lane_follow_r18.trt'))
+model_trt.load_state_dict(torch.load( dir + 'lane_follow_r18.trt'))
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -28,4 +31,4 @@ image = cv2.imread('000.jpg')
 image = preprocess(image).half()
 output = model_trt(image).detach().cpu().numpy().flatten()
 x = float(output[0])
-print(x)
+print(x * 900)

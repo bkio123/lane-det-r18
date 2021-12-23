@@ -13,7 +13,7 @@ import time
 import atexit
 
 device = torch.device('cuda')
-working_dir = '/home/nano/workspace/models/'
+working_dir = '/home/nano/workspace/models/lane-det-r18/'
 
 output_dim = 1   # angle coordinate for each category
 
